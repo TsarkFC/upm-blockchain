@@ -2,6 +2,7 @@ import base64, hashlib, random
 from datetime import datetime
 import time
 import pandas as pd
+import sys
 
 data_storage = {}
 
@@ -64,4 +65,9 @@ def generate_random(random_chars=16, alphabet="0123456789abcdefghijklmnopqrstuvw
     return ''.join([r.choice(alphabet) for i in range(random_chars)])
 
 if __name__ == '__main__':
-    hash_cash('50', 'test@gmail.com')
+    args = sys.argv
+    if (len(args) < 3):
+        print("[ERROR] Program should have 2 arguments")
+        exit(1)
+    print(args[1], args[2])
+    hash_cash(args[1], args[2])
